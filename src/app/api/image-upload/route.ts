@@ -14,7 +14,7 @@ interface CloudinaryUploadResult {
 	[key: string]: any;
 }
 
-export default async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
 	const { userId } = auth();
 
 	if (!userId) {
@@ -51,7 +51,7 @@ export default async function POST(request: NextRequest) {
 				uploadStream.end(buffer);
 			}
 		);
-
+		console.log("hello");
 		return NextResponse.json(
 			{ publicId: result.public_id },
 			{ status: 200 }
